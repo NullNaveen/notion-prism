@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Prism promotional tile</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        width: 440px;
+        height: 280px;
+        overflow: hidden;
+        background:
+          radial-gradient(ellipse at 0 0, #663caf, transparent 65%),
+          radial-gradient(ellipse at 100% 100%, #1c8c90, transparent 65%), #18142c;
+        color: #f5efff;
+        font-family: system-ui, sans-serif;
+        position: relative;
+      }
+      .brand {
+        position: absolute;
+        left: 30px;
+        top: 24px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        font-size: 35px;
+        font-weight: 650;
+        letter-spacing: -1.6px;
+      }
+      .mark {
+        width: 35px;
+        height: 37px;
+        clip-path: polygon(50% 0, 100% 100%, 0 100%);
+        background: conic-gradient(from 35deg at 45% 70%, #a2e6d4, #8c88f2, #e5b4f9, #a2e6d4);
+      }
+      .tag {
+        position: absolute;
+        top: 86px;
+        left: 31px;
+        font-size: 10px;
+        color: #dbceef;
+        letter-spacing: 2px;
+      }
+      .cards {
+        position: absolute;
+        top: 132px;
+        left: 28px;
+        display: flex;
+        gap: 12px;
+        transform: rotate(-7deg);
+      }
+      .card {
+        width: 116px;
+        height: 150px;
+        border: 1px solid #fff5;
+        border-radius: 12px;
+        box-shadow: 0 10px 35px #1115;
+        overflow: hidden;
+        background: linear-gradient(135deg, #8450ca, #11495e);
+      }
+      .card:nth-child(2) {
+        transform: translateY(-16px);
+        background: linear-gradient(135deg, #f5a8c1, #b1aae4);
+      }
+      .card:nth-child(3) {
+        background: linear-gradient(135deg, #087e88, #163b86);
+      }
+      .window {
+        height: 120px;
+        margin: 25px 12px 0;
+        display: flex;
+        border: 1px solid #fff3;
+        border-radius: 7px;
+        overflow: hidden;
+      }
+      .side {
+        width: 25px;
+        background: #201d3be6;
+      }
+      .page {
+        flex: 1;
+        background: #28233ce6;
+        padding: 15px 8px;
+      }
+      .line {
+        height: 4px;
+        border-radius: 2px;
+        background: #eee7ff70;
+        margin: 0 0 8px;
+      }
+      .line:first-child {
+        background: #c2a5ff;
+        height: 7px;
+        width: 80%;
+        margin-bottom: 13px;
+      }
+      .card:nth-child(2) .side {
+        background: #fff0f7df;
+      }
+      .card:nth-child(2) .page {
+        background: #fff4f9df;
+      }
+      .card:nth-child(2) .line {
+        background: #7a4b6965;
+      }
+      .card:nth-child(2) .line:first-child {
+        background: #b86691;
+      }
+      .card:nth-child(3) .side {
+        background: #0a263ddd;
+      }
+      .card:nth-child(3) .page {
+        background: #143044df;
+      }
+      .card:nth-child(3) .line:first-child {
+        background: #79d4d7;
+      }
+      .orb {
+        position: absolute;
+        right: 32px;
+        top: 33px;
+        width: 49px;
+        height: 49px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 25%, #e9c7fa, #9688d7 50%, #7dd2ca);
+        box-shadow: 0 0 25px #c5a8ff55;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="brand"><span class="mark"></span>prism</div>
+    <div class="tag">YOUR NOTION, IN FULL COLOR.</div>
+    <div class="orb"></div>
+    <div class="cards">
+      <div class="card">
+        <div class="window">
+          <div class="side"></div>
+          <div class="page">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="window">
+          <div class="side"></div>
+          <div class="page">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="window">
+          <div class="side"></div>
+          <div class="page">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

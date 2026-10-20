@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Prism — Privacy policy</title>
+    <style>
+      body {
+        font:
+          16px/1.75 system-ui,
+          sans-serif;
+        max-width: 760px;
+        margin: 64px auto;
+        padding: 0 24px;
+        background: #15151e;
+        color: #eae7f2;
+      }
+      h1,
+      h2 {
+        line-height: 1.3;
+      }
+      h1 {
+        font-size: 36px;
+      }
+      h2 {
+        font-size: 20px;
+        margin-top: 34px;
+      }
+      p,
+      li {
+        color: #bbb8ca;
+      }
+      a {
+        color: #c4b3ff;
+      }
+      .date {
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Prism privacy policy</h1>
+    <p class="date">Version 1.4.0 · October 7, 2026</p>
+    <p>
+      Prism — Themes for Notion customizes the appearance of the Notion web app. This policy
+      describes the extension code distributed with version 1.4.0.
+    </p>
+    <h2>What stays on your device</h2>
+    <p>
+      Prism stores your selected theme, appearance adjustments, and one original background image or
+      video in your browser's local extension storage. The image record includes its filename,
+      dimensions, and source URL when imported from the web. The image record also stores a small
+      derived palette: sampled colors, a representative hue, and a light/dark preference. Media
+      decoding and color analysis happen entirely on your device, without sending pixels to an AI
+      service or other analysis provider. The optional soft backdrop displays a blurred copy behind
+      the complete original using the same temporary local media URL. Original files are not resized
+      or recompressed; a small video thumbnail and sampled palette are stored separately. Animated
+      images retain their frames, and videos loop silently. The unlimitedStorage permission allows
+      original files above the default extension-storage quota, with a 20 MB source-file limit. The
+      standalone web preview uses local IndexedDB storage. A temporary page-instance marker
+      coordinates saves between open extension views. Prism does not use cloud sync.
+    </p>
+    <h2>Notion page access</h2>
+    <p>
+      Prism inspects page structure and rendered styles to apply a coordinated theme. It inserts CSS
+      and a background element into the Notion webpage. It does not collect or transmit your Notion
+      text, documents, credentials, or browsing history. It does not alter saved Notion content or
+      other people's appearance settings. Imported images are rendered in the webpage as
+      backgrounds; Prism itself does not upload them to a server.
+    </p>
+    <h2>Image links and network requests</h2>
+    <p>
+      When you import a public HTTPS image or page link, Prism asks for browser permission to access
+      its source host. For Pinterest sources it can request Pinterest and its image-host domains. If
+      an image is hosted elsewhere, another permission grant may be needed. Prism fetches the media
+      or public metadata with credentials omitted and does not execute remote scripts. Supported
+      video playlists are fetched only during import to select and save the highest-resolution
+      available single-file video; playback then uses the local saved file. During an import, its
+      read-only webRequest listener reads redirect destinations for its own download requests, so
+      each destination can be validated and checked for permission before it is fetched. The
+      listener is removed after the download step. Prism does not record unrelated browsing traffic.
+      Those source providers receive the network request, including your IP address and requested
+      URL, under their own privacy policies. Downloading an image does not send your Notion document
+      contents to that provider.
+    </p>
+    <h2>No analytics or developer service</h2>
+    <p>
+      This build has no Prism account, telemetry, advertising, tracking pixels, developer backend,
+      or remote executable code. Prism does not sell user data or send local preferences or uploaded
+      files to its developer.
+    </p>
+    <h2>Your controls</h2>
+    <p>
+      You can pause Prism to restore Notion's original appearance while retaining your preferences.
+      Remove the background image in Theme Studio to delete the stored image and its derived
+      palette. Reset appearance resets preferences while retaining the selected image for reuse. You
+      can revoke image-host access in your browser's extension settings. Uninstalling the extension
+      removes its local extension storage.
+    </p>
+    <h2>Contact and changes</h2>
+    <p>
+      For questions, use the developer contact or support link provided on the extension's store
+      listing or by the person who supplied your copy. Future releases may update this policy to
+      reflect changes in behavior. Review the policy supplied with the version you install.
+    </p>
+    <p>Prism is independent of Notion, Google, Pinterest, and browser vendors.</p>
+  </body>
+</html>

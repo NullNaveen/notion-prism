@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prism — Your Notion, in full color</title>
+    <link rel="icon" href="icons/icon32.png" />
+    <link rel="stylesheet" href="ui.css" />
+    <link rel="stylesheet" href="studio.css" />
+    <script src="palette.js" defer></script>
+    <script src="core.js" defer></script>
+    <script src="media.js" defer></script>
+    <script src="storage.js" defer></script>
+    <script src="images.js" defer></script>
+    <script src="studio.js" defer></script>
+  </head>
+  <body>
+    <svg class="icon-defs" aria-hidden="true">
+      <defs>
+        <symbol id="spark" viewBox="0 0 24 24">
+          <path d="m12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Z" />
+        </symbol>
+        <symbol id="image" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="4" />
+          <circle cx="8" cy="8" r="1.5" />
+          <path d="m3 17 5-5 4 4 4-6 5 7" />
+        </symbol>
+        <symbol id="sliders" viewBox="0 0 24 24">
+          <path d="M4 7h5m5 0h6M4 17h10m5 0h1" />
+          <circle cx="11" cy="7" r="2" />
+          <circle cx="16" cy="17" r="2" />
+        </symbol>
+        <symbol id="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" /></symbol>
+        <symbol id="upload" viewBox="0 0 24 24">
+          <path d="M12 16V3m-5 5 5-5 5 5M4 15v5a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5" />
+        </symbol>
+        <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6" /></symbol>
+        <symbol id="link" viewBox="0 0 24 24">
+          <path
+            d="m10 14 4-4m-6 6-1 1a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0m2 10a4 4 0 0 0 6 0l4-4a4 4 0 0 0-6-6l-1 1"
+            transform="translate(1 -1) scale(.92)"
+          />
+        </symbol>
+      </defs>
+    </svg>
+    <aside class="control-rail">
+      <a class="brand" href="studio.html" aria-label="Prism home"
+        ><span class="prism-mark" aria-hidden="true"></span
+        ><span>prism<span class="brand-sub">FOR NOTION</span></span></a
+      >
+      <div class="rail-intro">
+        <h1>Make room for color.</h1>
+        <p>
+          A workspace that feels like you. <span id="build-label" class="build-label">v1.4.0</span>
+        </p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Customization">
+        <button
+          class="tab active"
+          role="tab"
+          aria-selected="true"
+          aria-controls="themes-panel"
+          id="themes-tab"
+          data-tab="themes"
+        >
+          <svg><use href="#spark" /></svg>Themes
+        </button>
+        <button
+          class="tab"
+          role="tab"
+          aria-selected="false"
+          aria-controls="background-panel"
+          id="background-tab"
+          data-tab="background"
+          tabindex="-1"
+        >
+          <svg><use href="#image" /></svg>Background
+        </button>
+        <button
+          class="tab"
+          role="tab"
+          aria-selected="false"
+          aria-controls="tune-panel"
+          id="tune-tab"
+          data-tab="tune"
+          tabindex="-1"
+        >
+          <svg><use href="#sliders" /></svg>Fine-tune
+        </button>
+      </div>
+      <div class="control-scroll">
+        <section id="themes-panel" role="tabpanel" aria-labelledby="themes-tab">
+          <div class="section-line">
+            <h2>The collection</h2>
+            <span class="count">08</span>
+          </div>
+          <p class="auto-theme-notice" id="auto-theme-notice" hidden>
+            Your image is setting the colors. Pick a preset below to switch to manual.
+          </p>
+          <div class="filters" aria-label="Filter themes">
+            <button class="active" data-filter="all" aria-pressed="true">All themes</button
+            ><button data-filter="dark" aria-pressed="false">Dark</button
+            ><button data-filter="light" aria-pressed="false">Light</button>
+          </div>
+          <div class="theme-grid" id="theme-grid"></div>
+          <p class="quiet-note">
+            Every palette brings matching text, panels, borders, and accents.
+          </p>
+        </section>
+        <section id="background-panel" role="tabpanel" aria-labelledby="background-tab" hidden>
+          <div class="section-line">
+            <h2>Set the scene</h2>
+            <span class="tiny-tag">YOUR WORLD</span>
+          </div>
+          <p class="section-description">Bring your favorite place into your everyday space.</p>
+          <div class="segmented" aria-label="Background source">
+            <button id="gradient-mode" aria-pressed="true">Theme gradient</button
+            ><button id="image-mode" aria-pressed="false">Your background</button>
+          </div>
+          <div class="palette-mode-card">
+            <span class="field-label">Image colors</span>
+            <div class="segmented palette-mode" aria-label="Image color mode">
+              <button id="palette-auto" aria-pressed="true">Match image</button
+              ><button id="palette-manual" aria-pressed="false">Choose theme</button>
+            </div>
+            <p id="palette-mode-help" class="quiet-note">
+              Text, panels, and accents automatically follow your image.
+            </p>
+            <div
+              id="image-palette-swatches"
+              class="image-palette-swatches"
+              aria-label="Colors sampled from your image"
+              hidden
+            ></div>
+            <button id="choose-preset" class="text-button" hidden>Choose a preset theme ↗</button>
+          </div>
+          <div class="current-image" id="current-image" hidden>
+            <div class="image-card">
+              <img id="image-thumbnail" alt="Your current background" />
+              <div>
+                <small>Current background</small><strong id="image-name"></strong
+                ><span id="image-size"></span>
+              </div>
+            </div>
+            <div class="image-actions">
+              <button id="replace-image" class="secondary">Replace image</button
+              ><button id="replace-link" class="secondary">Use a link</button>
+            </div>
+            <button id="remove-image" class="text-button remove-image">
+              Remove background image
+            </button>
+          </div>
+          <label class="upload-area" id="drop-zone" for="image-file"
+            ><span class="upload-icon"
+              ><svg><use href="#upload" /></svg></span
+            ><strong>Drop a little inspiration</strong><span>or <b>choose an image</b></span
+            ><small>Images, GIF, MP4, WebM · up to 20 MB</small
+            ><input
+              id="image-file"
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/avif,image/gif,video/mp4,video/webm"
+          /></label>
+          <p class="quiet-note">
+            Any aspect ratio. Original files stay intact: no resizing or compression. GIFs keep
+            their animation. Videos loop silently.
+          </p>
+          <div class="or-line" id="link-divider"><span>or use a link</span></div>
+          <div id="url-editor">
+            <form id="url-form">
+              <label class="field-label" for="image-url"
+                >Image, video or public Pinterest link</label
+              >
+              <div class="url-input">
+                <svg><use href="#link" /></svg
+                ><input
+                  id="image-url"
+                  type="url"
+                  placeholder="https://…"
+                  autocomplete="off"
+                  required
+                  aria-describedby="url-help"
+                />
+              </div>
+              <button class="primary full" id="import-button" type="submit">
+                <span id="import-label">Use image</span> <svg><use href="#arrow" /></svg>
+              </button>
+            </form>
+            <p id="url-help" class="quiet-note">
+              Paste a direct image/video URL, a public pin, or a pin.it share link. Allow access
+              when Chrome asks.
+            </p>
+            <p id="preview-import-note" class="preview-import-note" hidden>
+              Pinterest and some websites need the installed extension. Open Prism from Chrome’s
+              Extensions menu, then choose Background.
+            </p>
+            <button class="secondary full" id="grant-button" hidden>
+              Allow image host and retry
+            </button>
+            <button class="text-button cancel-replace" id="cancel-replace" hidden>
+              Cancel replacement
+            </button>
+          </div>
+          <div class="import-status" id="import-status" role="status" aria-live="polite"></div>
+          <div class="image-controls" id="image-controls" hidden>
+            <div class="framing-controls">
+              <span class="field-label">Image framing</span>
+              <div class="segmented" aria-label="Image framing">
+                <button id="fit-image" aria-pressed="true">Show entire image</button
+                ><button id="fill-image" aria-pressed="false">Fill screen (crop)</button
+                ><button id="stretch-image" aria-pressed="false">Stretch to screen</button>
+              </div>
+              <p class="quiet-note" id="framing-help">
+                Show the entire image without cropping or distortion. A soft copy fills any extra
+                space.
+              </p>
+              <label class="auto-landscape" id="fit-backdrop-control" for="fit-backdrop"
+                ><input id="fit-backdrop" type="checkbox" checked /><span
+                  >Fill empty space with a soft backdrop</span
+                ></label
+              >
+              <div class="orientation-card">
+                <p class="quiet-note" id="orientation-help" role="status"></p>
+                <div class="orientation-actions">
+                  <button
+                    class="secondary"
+                    id="rotate-left"
+                    aria-label="Rotate background left 90 degrees"
+                  >
+                    ↶ Rotate left</button
+                  ><button
+                    class="secondary"
+                    id="rotate-right"
+                    aria-label="Rotate background right 90 degrees"
+                  >
+                    Rotate right ↷
+                  </button>
+                </div>
+                <button class="text-button" id="revert-orientation" hidden>
+                  Revert to original framing</button
+                ><label class="auto-landscape" for="auto-landscape"
+                  ><input id="auto-landscape" type="checkbox" checked /><span
+                    >Auto-fit new portrait backgrounds to a wide window</span
+                  ></label
+                >
+              </div>
+              <p class="quiet-note" id="image-quality-help"></p>
+              <button class="secondary full" id="video-playback" hidden>Pause background</button>
+              <p class="quiet-note" id="video-help" hidden>
+                Videos loop without sound. Framing changes playback size only; your original video
+                stays intact.
+              </p>
+              <button class="text-button" id="clear-image-effects">Clear dim &amp; blur</button>
+              <p class="quiet-note">
+                A larger window or high-density screen needs more source pixels. Enlarging a small
+                image can look soft even when the file is unchanged.
+              </p>
+            </div>
+            <div class="slider-field">
+              <label for="dim">Dim image <output id="dim-value" for="dim">30%</output></label
+              ><input id="dim" data-setting="dim" type="range" min="0" max="80" value="30" />
+            </div>
+            <div class="slider-field">
+              <label for="blur">Soft focus <output id="blur-value" for="blur">0 px</output></label
+              ><input id="blur" data-setting="blur" type="range" min="0" max="30" value="0" />
+            </div>
+            <div class="slider-field">
+              <label for="positionX"
+                >Horizontal position
+                <output id="positionX-value" for="positionX">50%</output></label
+              ><input
+                id="positionX"
+                data-setting="positionX"
+                type="range"
+                min="0"
+                max="100"
+                value="50"
+              />
+            </div>
+            <div class="slider-field">
+              <label for="positionY"
+                >Vertical position <output id="positionY-value" for="positionY">50%</output></label
+              ><input
+                id="positionY"
+                data-setting="positionY"
+                type="range"
+                min="0"
+                max="100"
+                value="50"
+              />
+            </div>
+          </div>
+        </section>
+        <section id="tune-panel" role="tabpanel" aria-labelledby="tune-tab" hidden>
+          <div class="section-line"><h2>The finishing touches</h2></div>
+          <p class="section-description">A few small details. Entirely your own.</p>
+          <div class="tune-card">
+            <label class="auto-landscape text-color-control" for="match-text-colors"
+              ><input id="match-text-colors" type="checkbox" checked /><span
+                >Match document text to the theme</span
+              ></label
+            >
+            <p class="quiet-note">
+              Headings and colored text follow your palette. Turn off to keep colors chosen in
+              Notion. Status labels keep their meaning; code and artwork keep their own colors.
+            </p>
+          </div>
+          <div class="tune-card">
+            <div class="slider-field">
+              <label for="surfaceOpacity"
+                >Reading surface
+                <output id="surfaceOpacity-value" for="surfaceOpacity">92%</output></label
+              ><input
+                id="surfaceOpacity"
+                data-setting="surfaceOpacity"
+                type="range"
+                min="65"
+                max="100"
+                value="92"
+              />
+            </div>
+            <p class="quiet-note" id="contrast-help">
+              Reading panels protect text contrast. Tables and boards stay transparent, with
+              protected text and status labels.
+            </p>
+          </div>
+          <div class="tune-card">
+            <label class="field-label" for="accent">Accent color</label>
+            <div class="accent-row">
+              <input id="accent" type="color" value="#b8a0ff" /><span id="accent-hex">#B8A0FF</span
+              ><button class="text-button" id="reset-accent">Use theme color</button>
+            </div>
+            <p class="quiet-note">For links, selections, and little moments of emphasis.</p>
+          </div>
+          <div class="tune-card">
+            <strong class="field-label">Want a fresh start?</strong>
+            <p class="quiet-note">
+              Reset the palette and adjustments to Aurora. Your uploaded image stays available.
+            </p>
+            <button class="secondary full" id="reset-settings">Reset appearance</button>
+          </div>
+        </section>
+      </div>
+      <footer class="rail-footer">
+        <label class="enabled-row" for="enabled"
+          ><span
+            ><strong>Prism is <span id="enabled-text">on</span></strong
+            ><small id="enabled-help">A little color, everywhere in Notion.</small></span
+          ><span class="switch"><input id="enabled" type="checkbox" checked /><span></span></span
+        ></label>
+        <div class="local-note">
+          <span class="status-dot"></span
+          ><span id="save-status" role="status" aria-live="polite">Saved on this device</span>
+        </div>
+      </footer>
+    </aside>
+    <main class="studio-main">
+      <header class="topbar">
+        <span class="studio-label">YOUR PERSONAL THEME STUDIO</span
+        ><a
+          class="notion-link"
+          href="https://www.notion.so"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Notion <svg><use href="#arrow" /></svg
+        ></a>
+      </header>
+      <div class="preview-banner" id="preview-banner" hidden>
+        <strong>This is a preview. Changes here do not update Notion.</strong>To customize your
+        workspace, open Prism from the extensions menu in the same browser profile as Notion. After
+        updating Prism, reload the extension and refresh your Notion tabs.
+      </div>
+      <section class="hero">
+        <div class="eyebrow"><span></span> LESS ORDINARY. MORE YOU.</div>
+        <h2>Your space,<br /><em>in full color.</em></h2>
+        <p>A new atmosphere for your ideas.<br />Pick a palette. Make yourself at home.</p>
+        <div class="hero-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+      </section>
+      <section class="preview-section" aria-label="Live theme preview">
+        <div class="preview-heading">
+          <div>
+            <span class="live-dot"></span><strong>Live preview</strong
+            ><span class="preview-tag">NOTION WORKSPACE</span>
+          </div>
+          <span id="preview-theme-name">Aurora</span>
+        </div>
+        <div class="preview-window" id="preview-window">
+          <div class="preview-wallpaper" id="preview-wallpaper"></div>
+          <div class="preview-shade"></div>
+          <div class="window-chrome">
+            <span class="window-dots"><i></i><i></i><i></i></span
+            ><span class="preview-address"
+              ><span class="lock-icon">⌑</span> notion.so / your-space</span
+            ><span class="window-menu">···</span>
+          </div>
+          <div class="notion-preview">
+            <aside class="preview-sidebar">
+              <div class="preview-workspace">
+                <span class="workspace-avatar">N</span><strong>Your workspace</strong><span>⌄</span>
+              </div>
+              <div class="preview-nav"><span>⌕</span> Search <small>⌘ K</small></div>
+              <div class="preview-nav"><span>⌂</span> Home</div>
+              <div class="preview-nav"><span>◷</span> Inbox <i class="notification"></i></div>
+              <div class="preview-group">Favorites <span>+</span></div>
+              <div class="preview-nav selected"><span>✧</span> Creative space</div>
+              <div class="preview-nav"><span>▤</span> Reading list</div>
+              <div class="preview-nav"><span>☷</span> Life, organized</div>
+              <div class="preview-group">Private <span>+</span></div>
+              <div class="preview-nav"><span>◈</span> The next big thing</div>
+              <div class="preview-nav"><span>▧</span> Moodboard</div>
+              <div class="preview-nav faint"><span>+</span> Add a page</div>
+              <div class="sidebar-bottom"><span>⚙</span> Settings & members</div>
+            </aside>
+            <div class="preview-main">
+              <div class="preview-breadcrumb">
+                <span>✧ &nbsp; Creative space</span
+                ><span>Edited just now &nbsp;&nbsp; ☆ &nbsp; ···</span>
+              </div>
+              <div class="preview-document">
+                <div class="page-icon" aria-hidden="true">✳</div>
+                <h3>A space for possibility.</h3>
+                <p class="document-subtitle">Good things start with a little room to think.</p>
+                <div class="preview-callout">
+                  <svg><use href="#spark" /></svg>
+                  <div>
+                    <strong>Make something that feels like you.</strong>
+                    <p>Collect the ideas. Follow the curiosity. Enjoy the process.</p>
+                  </div>
+                </div>
+                <div class="document-columns">
+                  <div>
+                    <h4>On my mind</h4>
+                    <p class="check-row">
+                      <span class="fake-check checked">✓</span> Find a fresh perspective
+                    </p>
+                    <p class="check-row">
+                      <span class="fake-check"></span> Make time for the good ideas
+                    </p>
+                    <p class="check-row">
+                      <span class="fake-check"></span> Build something wonderful
+                    </p>
+                  </div>
+                  <div class="quote-card">
+                    <span>“</span>
+                    <p>
+                      Almost everything will work again if you unplug it for a few minutes,
+                      including you.
+                    </p>
+                    <small>ANNE LAMOTT</small>
+                  </div>
+                </div>
+                <div class="preview-table">
+                  <div class="table-title">
+                    <span>↗ &nbsp; Little projects</span
+                    ><span class="preview-new">New <span>⌄</span></span>
+                  </div>
+                  <div class="table-row table-head">
+                    <span>Aa &nbsp; Name</span><span>◎ &nbsp; Status</span
+                    ><span>↗ &nbsp; Priority</span>
+                  </div>
+                  <div class="table-row">
+                    <span>✦ &nbsp; A beautiful beginning</span
+                    ><span><i class="pill">In progress</i></span
+                    ><span class="priority">High</span>
+                  </div>
+                  <div class="table-row">
+                    <span>◈ &nbsp; Something worth exploring</span
+                    ><span><i class="pill muted-pill">Idea</i></span
+                    ><span>Whenever</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="paused-overlay" id="paused-overlay" hidden>
+            <strong>Your original Notion, restored.</strong
+            ><span>Turn Prism on when you’re ready for more color.</span>
+          </div>
+        </div>
+      </section>
+      <footer class="palette-footer">
+        <div>
+          <span class="palette-swatches" id="palette-swatches"></span>
+          <div>
+            <strong>Everything, in harmony.</strong>
+            <p id="theme-description">Violet skies. A little northern light.</p>
+          </div>
+        </div>
+        <span class="footer-note">Your content stays yours.<br />Only the atmosphere changes.</span>
+      </footer>
+      <p class="preview-disclaimer">
+        Illustrative preview. Prism styles the Notion web app in your browser; other people see
+        their own theme. <a href="privacy.html" target="_blank" rel="noopener">Privacy</a>
+      </p>
+    </main>
+  </body>
+</html>

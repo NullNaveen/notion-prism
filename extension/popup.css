@@ -1,0 +1,139 @@
+body {
+  width: 356px;
+  padding: 21px 22px 15px;
+  background: #17181f;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 23px;
+}
+.brand {
+  font-size: 27px;
+  gap: 10px;
+}
+.brand-sub {
+  font-size: 7px;
+  letter-spacing: 1.8px;
+  margin-top: 6px;
+}
+.prism-mark {
+  width: 29px;
+  height: 31px;
+}
+.popup-hero {
+  padding: 21px 20px 19px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ffffff19;
+  background: var(--prism-gradient);
+  color: var(--prism-text);
+}
+.popup-hero:after {
+  content: '';
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border: 1px solid #ffffff1a;
+  border-radius: 50%;
+  right: -37px;
+  top: -57px;
+  box-shadow:
+    0 0 0 24px #ffffff08,
+    0 0 0 48px #ffffff05;
+}
+.hero-eyebrow {
+  font-size: 7px;
+  letter-spacing: 1.6px;
+}
+.popup-hero h1 {
+  font-size: 27px;
+  letter-spacing: -0.9px;
+  line-height: 1.15;
+  font-weight: 500;
+  margin: 13px 0 17px;
+}
+.popup-hero em {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+.active-theme {
+  border: 1px solid #ffffff35;
+  background: #ffffff12;
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: 8px;
+}
+.collection-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 22px 1px 10px;
+}
+.collection-heading h2 {
+  font-size: 11px;
+  font-weight: 500;
+  margin: 0;
+}
+.collection-heading > span {
+  color: #9794a5;
+  font-size: 9px;
+}
+.theme-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px 5px;
+  margin-bottom: 22px;
+}
+.theme-card {
+  padding: 3px;
+  border-radius: 8px;
+}
+.theme-art {
+  height: 40px;
+  border-radius: 5px;
+}
+.theme-label {
+  font-size: 9px;
+  margin: 6px 1px 3px;
+}
+.theme-check {
+  width: 14px;
+  height: 14px;
+  font-size: 9px;
+  right: 7px;
+  top: 7px;
+}
+.primary {
+  min-height: 40px;
+  font-size: 11px;
+  justify-content: space-between;
+}
+.studio-help {
+  font-size: 9px;
+  color: #a39aad;
+  text-align: center;
+  margin: 10px 0 18px;
+}
+footer {
+  border-top: 1px solid #302c3b;
+  padding-top: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 8px;
+  color: #aaa0b7;
+}
+footer .status-dot {
+  width: 5px;
+  height: 5px;
+  background: #a49ab6;
+}
+footer button {
+  margin-left: auto;
+  background: none;
+  color: #c6b4e4;
+  font-size: 8px;
+  padding: 3px;
+}

@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Current Notion styles — Prism QA</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        font: 14px/1.5 system-ui;
+        height: 100%;
+      }
+      .notion-light-theme {
+        --c-texPri: #2c2c2b;
+        --c-texSec: #7d7a75;
+        --c-texTer: #a19e99;
+        --ca-texDisTra: rgba(21, 14, 0, 0.286);
+        --c-bacPri: #fff;
+        --c-bacSec: #f9f8f7;
+        --c-bacEle: #fff;
+        --c-graTexPri: #494846;
+        --c-graTexAccPri: #8e8b86;
+        --ca-graBacTerTra: rgba(28, 19, 1, 0.11);
+        --c-bluBacAccPri: #2783de;
+        --c-bluTexInvPri: #f3f9fd;
+        --c-bluIcoAccPri: #2783de;
+        --c-borPri: #e6e5e3;
+        --c-popBac: #fff;
+        --c-purTexPri: #6b4c9a;
+        --c-purBacPri: #f3eef7;
+      }
+      .notion-app-inner {
+        min-height: 100vh;
+        color: var(--c-texPri);
+        background: var(--c-bacPri);
+      }
+      .notion-topbar {
+        padding: 12px 24px;
+        display: flex;
+        gap: 20px;
+      }
+      .notion-frame {
+        padding: 24px;
+        min-height: 90vh;
+      }
+      .notion-page-content {
+        padding: 20px;
+      }
+      .view-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .view {
+        padding: 16px;
+        border: 1px solid var(--c-borPri);
+        border-radius: 10px;
+        background: var(--c-bacPri);
+      }
+      h1 {
+        margin: 0 0 16px;
+      }
+      h2 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+      .native-title {
+        color: rgb(44, 44, 43);
+        -webkit-text-fill-color: rgb(44, 44, 43);
+      }
+      .native-muted {
+        color: var(--c-graTexAccPri);
+      }
+      .chip {
+        display: inline-flex;
+        padding: 2px 8px;
+        border-radius: 5px;
+        margin: 5px 0;
+      }
+      .notion-peek-renderer {
+        padding: 20px;
+        margin: 20px 0;
+        border: 1px solid var(--c-borPri);
+      }
+      button {
+        font: inherit;
+        border: 0;
+        border-radius: 5px;
+        padding: 5px 12px;
+      }
+      .native-calendar-cell {
+        background: #fff;
+        color: #37352f;
+        padding: 12px;
+      }
+      .notion-code-block {
+        margin-top: 16px;
+        padding: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="notion-app">
+      <div class="notion-light-theme" style="display: contents">
+        <div
+          class="notion-app-inner notion-light-theme"
+          style="color: var(--c-texPri); background: var(--c-bacPri)"
+        >
+          <div class="notion-topbar">
+            <strong>Workspace preview</strong
+            ><span class="native-muted" data-check="muted">Last edited today</span
+            ><button style="background: var(--c-bluBacAccPri); color: var(--c-bluTexInvPri)">
+              New
+            </button>
+          </div>
+          <main class="notion-frame">
+            <div class="notion-page-content">
+              <h1 class="native-title" data-check="primary">A coordinated workspace</h1>
+              <p data-check="primary" style="color: #5f5e59">
+                Ordinary page text using a native neutral shade.
+              </p>
+              <div class="view-grid">
+                <section class="view notion-table-view">
+                  <h2 class="native-title" data-check="primary">Table</h2>
+                  <div style="background: var(--c-bacPri)">
+                    <span class="native-muted" data-check="muted">Task name</span>
+                    <div data-check="primary" style="color: #37352f">A table row</div>
+                  </div>
+                </section>
+                <section class="view notion-board-view">
+                  <h2 class="native-title" data-check="primary">Board</h2>
+                  <div class="notion-collection-card" style="background: white">
+                    <span data-check="primary" style="color: #37352f">A board card</span>
+                    <div
+                      class="chip"
+                      data-check="chip"
+                      style="background: var(--ca-graBacTerTra); color: var(--c-graTexPri)"
+                    >
+                      Not started
+                    </div>
+                  </div>
+                </section>
+                <section class="view notion-list-view">
+                  <h2 class="native-title" data-check="primary">List</h2>
+                  <span class="native-muted" data-check="muted">Due tomorrow</span>
+                  <p data-check="primary" style="color: #37352f">A list entry</p>
+                </section>
+                <section class="view notion-gallery-view">
+                  <h2 class="native-title" data-check="primary">Gallery</h2>
+                  <div class="notion-collection-card" style="background: white">
+                    <span data-check="primary" style="color: #37352f">A gallery card</span>
+                  </div>
+                </section>
+                <section class="view notion-calendar-view">
+                  <h2 class="native-title" data-check="primary">Calendar</h2>
+                  <div class="native-calendar-cell" style="background: white">
+                    <span data-check="primary" style="color: #37352f">A calendar event</span>
+                  </div>
+                </section>
+                <section class="view notion-timeline-view">
+                  <h2 class="native-title" data-check="primary">Timeline</h2>
+                  <div data-check="primary" style="color: #37352f; background: white">
+                    A scheduled item
+                  </div>
+                </section>
+                <section class="view notion-feed-view">
+                  <h2 class="native-title" data-check="primary">Feed</h2>
+                  <span class="native-muted" data-check="muted">Updated today</span>
+                </section>
+              </div>
+            </div>
+            <div class="notion-peek-renderer">
+              <h2 class="native-title" data-check="primary">Side peek</h2>
+              <div role="table" aria-label="Page properties">
+                <span class="native-muted" data-check="muted">Status</span
+                ><button
+                  class="chip"
+                  data-check="chip"
+                  style="background: var(--ca-graBacTerTra); color: var(--c-graTexPri)"
+                >
+                  Not started
+                </button>
+              </div>
+              <div
+                contenteditable="true"
+                style="color: var(--c-texPri); -webkit-text-fill-color: var(--ca-texDisTra)"
+              >
+                Add a comment…
+              </div>
+            </div>
+            <div class="notion-page-content">
+              <span id="authored" data-color="red" style="color: #d44c47"
+                >A manually colored sentence</span
+              >
+              <div id="highlight" style="background: var(--c-purBacPri)">
+                <span style="color: var(--c-texPri)">A native highlighted sentence</span>
+              </div>
+              <div class="notion-code-block">
+                <code id="syntax" style="color: #dd4a68">originalSyntaxColor()</code>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

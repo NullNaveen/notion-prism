@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="en" class="notion-html">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Studio home · Notion fixture</title>
+    <style>
+      :root,
+      .notion-light-theme {
+        --c-texPri: #2c2c2b;
+        --c-texSec: #7d7a75;
+        --c-bacPri: #fff;
+        --c-bacSec: #f9f8f7;
+        --c-bacTer: #f0efed;
+        --c-borPri: #e6e5e3;
+        --c-popBac: #fff;
+        --c-bluBacAccPri: #2383e2;
+        --c-bluTexInvPri: #fff;
+        --c-purTexPri: #9065b0;
+        --c-purBacPri: #f3eef7;
+        --ca-staHov: rgba(55, 53, 47, 0.04);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+        font-size: 14px;
+        color: var(--c-texPri);
+        background: white;
+      }
+      button,
+      input {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+        border: 0;
+        color: inherit;
+        background: transparent;
+      }
+      button:hover {
+        background: var(--ca-staHov);
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      #notion-app {
+        min-height: 100vh;
+        background: white;
+      }
+      .notion-app-inner {
+        display: flex;
+        min-height: 100vh;
+        background: white;
+      }
+      .notion-sidebar-container {
+        width: 248px;
+        flex-shrink: 0;
+        padding: 20px 14px;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        inset: 0 auto 0 0;
+        border-right: 1px solid var(--c-borPri);
+        z-index: 10;
+      }
+      .workspace {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 8px 20px;
+        font-weight: 650;
+      }
+      .workspace-icon {
+        display: grid;
+        place-items: center;
+        width: 25px;
+        height: 25px;
+        border-radius: 5px;
+        background: #ebe7e1;
+        color: #37352f;
+      }
+      .nav-row {
+        min-height: 34px;
+        display: flex;
+        gap: 11px;
+        align-items: center;
+        border-radius: 6px;
+        padding: 6px 10px;
+        margin: 1px 0;
+        font-weight: 500;
+      }
+      .nav-row .icon {
+        font-size: 16px;
+        width: 19px;
+        text-align: center;
+        opacity: 0.75;
+      }
+      .nav-row.selected {
+        background: rgba(55, 53, 47, 0.065);
+      }
+      .nav-label {
+        font-size: 11px;
+        letter-spacing: 0.02em;
+        padding: 21px 10px 9px;
+        color: var(--c-texSec);
+        font-weight: 600;
+      }
+      .sidebar-footer {
+        margin-top: auto;
+        padding-top: 35px;
+      }
+      .main-wrap {
+        margin-left: 248px;
+        flex: 1;
+        min-width: 0;
+      }
+      .notion-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 52px;
+        padding: 0 26px;
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.06);
+        gap: 20px;
+      }
+      .breadcrumbs {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+      .breadcrumbs .faint {
+        color: var(--c-texSec);
+      }
+      .top-actions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        font-size: 12px;
+      }
+      .notion-frame {
+        min-height: calc(100vh - 52px);
+      }
+      .notion-scroller {
+        min-height: calc(100vh - 52px);
+        overflow: auto;
+      }
+      .notion-page-content {
+        max-width: 1000px;
+        padding: 57px 66px 110px;
+        margin: auto;
+        line-height: 1.65;
+      }
+      .page-icon {
+        font-size: 46px;
+        line-height: 1;
+        margin-bottom: 18px;
+      }
+      h1 {
+        font-size: 38px;
+        line-height: 1.25;
+        letter-spacing: -1.3px;
+        margin: 0 0 14px;
+        font-weight: 720;
+      }
+      h2 {
+        font-size: 21px;
+        line-height: 1.4;
+        margin: 31px 0 16px;
+        letter-spacing: -0.4px;
+      }
+      p {
+        margin: 8px 0 18px;
+      }
+      .intro {
+        font-size: 15px;
+        max-width: 680px;
+      }
+      .notion-callout-block {
+        border-radius: 6px;
+        padding: 15px 18px;
+        display: flex;
+        gap: 13px;
+        margin: 24px 0;
+      }
+      .notion-callout-block p {
+        margin: 0;
+      }
+      .columns {
+        display: grid;
+        grid-template-columns: 1.25fr 1fr;
+        gap: 34px;
+      }
+      .notion-collection_view-block {
+        margin-top: 27px;
+      }
+      .database-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--c-borPri);
+        padding-bottom: 9px;
+        gap: 10px;
+      }
+      .database-tabs {
+        display: flex;
+        gap: 17px;
+        font-size: 13px;
+      }
+      .database-tools {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-size: 12px;
+      }
+      .primary-button {
+        padding: 5px 13px;
+        border-radius: 5px;
+        background: var(--c-bluBacAccPri);
+        color: var(--c-bluTexInvPri);
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 13px;
+      }
+      th {
+        text-align: left;
+        font-weight: 400;
+        color: var(--c-texSec);
+        height: 35px;
+      }
+      th,
+      td {
+        padding: 10px 13px;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.13);
+      }
+      th + th,
+      td + td {
+        border-left: 1px solid rgba(55, 53, 47, 0.13);
+      }
+      .tag {
+        display: inline-block;
+        border-radius: 4px;
+        padding: 0 7px;
+        font-size: 12px;
+        line-height: 22px;
+      }
+      .checklist {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .checklist li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 7px 0;
+      }
+      input[type='checkbox'] {
+        width: 15px;
+        height: 15px;
+        margin: 0;
+      }
+      .notion-code-block {
+        background: var(--c-bacSec);
+        border: 1px solid var(--c-borPri);
+        border-radius: 7px;
+        padding: 17px;
+        font-size: 12px;
+      }
+      pre {
+        margin: 0;
+        white-space: pre-wrap;
+        line-height: 1.8;
+        font-family: ui-monospace, SFMono-Regular, monospace;
+      }
+      .code-caption {
+        margin-top: 7px;
+        font-size: 11px;
+        color: var(--c-texSec);
+      }
+      .art-card {
+        width: 100%;
+        height: 110px;
+        margin: 19px 0;
+        border-radius: 7px;
+        display: block;
+        background: #f0eafb;
+        object-fit: cover;
+      }
+      .fixture-controls {
+        position: fixed;
+        bottom: 15px;
+        right: 20px;
+        display: flex;
+        gap: 6px;
+        padding: 7px;
+        border: 1px solid var(--c-borPri);
+        border-radius: 9px;
+        z-index: 30;
+        background: var(--c-popBac);
+        box-shadow: 0 8px 24px #0001;
+      }
+      .fixture-controls button {
+        padding: 6px 9px;
+        font-size: 11px;
+        border-radius: 5px;
+      }
+      .notion-overlay-container [role='menu'] {
+        position: fixed;
+        right: 44px;
+        top: 62px;
+        z-index: 100;
+        width: 248px;
+        border: 1px solid rgba(55, 53, 47, 0.12);
+        box-shadow: 0 8px 30px #0002;
+        border-radius: 9px;
+        padding: 6px;
+      }
+      [role='menuitem'] {
+        padding: 8px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      @media (max-width: 850px) {
+        .notion-sidebar-container {
+          width: 195px;
+        }
+        .main-wrap {
+          margin-left: 195px;
+        }
+        .notion-page-content {
+          padding: 36px 28px 100px;
+        }
+        .top-actions .hide-narrow {
+          display: none;
+        }
+        .columns {
+          grid-template-columns: 1fr;
+        }
+        .database-tools {
+          display: none;
+        }
+      }
+      @media (max-width: 590px) {
+        .notion-sidebar-container {
+          display: none;
+        }
+        .main-wrap {
+          margin-left: 0;
+        }
+        .notion-topbar {
+          padding: 0 17px;
+        }
+        .notion-page-content {
+          padding: 30px 21px 95px;
+        }
+        .fixture-controls {
+          right: 10px;
+          bottom: 10px;
+        }
+        h1 {
+          font-size: 32px;
+        }
+      }
+    </style>
+  </head>
+  <body class="notion-body notion-light-theme">
+    <div id="notion-app" style="color: rgb(55, 53, 47); background-color: rgb(255, 255, 255)">
+      <div class="notion-app-inner" style="background-color: white">
+        <aside
+          class="notion-sidebar-container"
+          aria-label="Workspace sidebar"
+          style="background-color: rgb(249, 248, 247); color: rgb(55, 53, 47)"
+        >
+          <div class="workspace">
+            <span class="workspace-icon">S</span><span>Studio workspace</span
+            ><span style="margin-left: auto; color: rgb(155, 154, 151)">⌄</span>
+          </div>
+          <button class="nav-row"><span class="icon">⌕</span>Search</button>
+          <button class="nav-row"><span class="icon">⌂</span>Home</button>
+          <button class="nav-row">
+            <span class="icon">◷</span>Inbox<span
+              style="margin-left: auto; color: rgba(55, 53, 47, 0.5)"
+              >3</span
+            >
+          </button>
+          <div class="nav-label">Private</div>
+          <a
+            class="nav-row selected"
+            href="#home"
+            aria-current="page"
+            style="background-color: rgba(55, 53, 47, 0.065)"
+            ><span class="icon">✦</span>Studio home</a
+          >
+          <a class="nav-row" href="#projects"><span class="icon">▤</span>Projects</a>
+          <a class="nav-row" href="#inspiration"><span class="icon">◈</span>Inspiration</a>
+          <a class="nav-row" href="#notes"><span class="icon">✎</span>Daily notes</a>
+          <div class="nav-label">Teamspaces</div>
+          <a class="nav-row" href="#creative"><span class="icon">⌘</span>Creative lab</a>
+          <a class="nav-row" href="#knowledge"><span class="icon">▧</span>Knowledge base</a>
+          <div class="sidebar-footer" style="color: rgb(125, 122, 117)">
+            <button class="nav-row"><span class="icon">⚙</span>Settings</button>
+            <button class="nav-row"><span class="icon">♧</span>Templates</button>
+            <button class="nav-row"><span class="icon">♜</span>Trash</button>
+          </div>
+        </aside>
+        <div class="main-wrap notion-cursor-listener" style="background-color: #fff">
+          <header
+            class="notion-topbar"
+            style="background-color: rgb(255, 255, 255); color: rgb(55, 53, 47)"
+          >
+            <div class="breadcrumbs">
+              <span>✦</span><span>Studio home</span><span class="faint">/</span
+              ><span class="faint">Overview</span>
+            </div>
+            <div class="top-actions">
+              <span class="hide-narrow" style="color: rgba(55, 53, 47, 0.5)">Edited just now</span
+              ><button>Share</button><button aria-label="Favorite">☆</button
+              ><button id="open-menu" aria-label="Page menu">•••</button>
+            </div>
+          </header>
+          <main class="notion-frame" style="background-color: white">
+            <div class="notion-scroller" style="background-color: #fff">
+              <article class="notion-page-content">
+                <div class="page-icon">✦</div>
+                <h1
+                  class="notion-selectable notion-header-block"
+                  data-block-id="title"
+                  contenteditable="true"
+                  style="color: rgb(55, 53, 47)"
+                >
+                  A little space for big ideas.
+                </h1>
+                <p
+                  class="intro notion-text-block"
+                  contenteditable="true"
+                  style="color: rgb(55, 53, 47)"
+                >
+                  A home for the things we’re making, the details we love, and whatever comes next.
+                  Make room for a little possibility.
+                </p>
+                <div
+                  class="notion-callout-block"
+                  data-block-id="callout"
+                  data-color="purple_background"
+                  style="background-color: rgb(243, 238, 247); color: rgb(105, 64, 132)"
+                >
+                  <span>✧</span>
+                  <p>
+                    This week’s intention: <strong>create with curiosity.</strong><br />Find one
+                    small thing that makes the ordinary feel new.
+                  </p>
+                </div>
+                <div class="notion-collection_view-block">
+                  <h2>On the drawing board</h2>
+                  <div class="database-toolbar">
+                    <div class="database-tabs">
+                      <span>▤ All projects</span
+                      ><span style="color: rgb(125, 122, 117)">◫ Board</span
+                      ><span style="color: rgb(125, 122, 117)">＋</span>
+                    </div>
+                    <div class="database-tools">
+                      <button>Filter</button><button>Sort</button
+                      ><button class="primary-button">New ⌄</button>
+                    </div>
+                  </div>
+                  <table class="notion-table-view" aria-label="Projects">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Due date</th>
+                      </tr>
+                    </thead>
+                    <tbody id="project-rows">
+                      <tr>
+                        <td style="border-bottom-color: rgba(55, 53, 47, 0.13)">
+                          ✧ &nbsp; Brand exploration
+                        </td>
+                        <td>
+                          <span class="tag" style="background-color: #e8deee; color: #694084"
+                            >In progress</span
+                          >
+                        </td>
+                        <td style="color: rgb(120, 119, 116)">October 8</td>
+                      </tr>
+                      <tr>
+                        <td>◈ &nbsp; Autumn collection</td>
+                        <td>
+                          <span class="tag" style="background-color: #dbeee2; color: #2b593f"
+                            >Ready to share</span
+                          >
+                        </td>
+                        <td style="color: rgb(120, 119, 116)">October 12</td>
+                      </tr>
+                      <tr>
+                        <td>▧ &nbsp; Our next chapter</td>
+                        <td>
+                          <span class="tag" style="background-color: #e8e8e6; color: #575652"
+                            >Not started</span
+                          >
+                        </td>
+                        <td style="color: rgb(120, 119, 116)">October 19</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="columns">
+                  <section>
+                    <h2>Small steps, good days</h2>
+                    <ul class="checklist">
+                      <li>
+                        <input type="checkbox" checked aria-label="Collect references" /><span
+                          style="color: rgb(120, 119, 116)"
+                          ><s>Collect a few beautiful references</s></span
+                        >
+                      </li>
+                      <li>
+                        <input type="checkbox" aria-label="Make a first draft" />Make a wonderfully
+                        imperfect first draft
+                      </li>
+                      <li>
+                        <input type="checkbox" aria-label="Share work" />Share something before it
+                        feels ready
+                      </li>
+                    </ul>
+                    <p class="notion-text-block" style="margin-top: 18px">
+                      Keep the
+                      <span id="authored-color" style="color: rgb(212, 76, 71)"
+                        >unexpected color</span
+                      >, the
+                      <span id="authored-gray" style="color: rgb(120, 119, 116)">quiet gray</span>,
+                      and the
+                      <span
+                        id="authored-highlight"
+                        style="background-color: rgb(241, 241, 239); color: #37352f"
+                        >little highlights</span
+                      >.
+                    </p>
+                  </section>
+                  <section>
+                    <h2>From the sketchbook</h2>
+                    <div class="notion-code-block" data-block-id="code">
+                      <pre><code><span style="color:#07a">const</span> <span style="color:#37352f">possibility</span> = <span style="color:#690">'everywhere'</span>;
+<span style="color:#708090">// Keep the original syntax palette.</span>
+<span style="color:#dd4a68">makeSomething</span>(possibility);</code></pre>
+                    </div>
+                    <div class="code-caption">A tiny reminder, in JavaScript.</div>
+                  </section>
+                </div>
+                <div class="notion-image-block" data-block-id="art">
+                  <svg
+                    id="authored-svg"
+                    class="art-card"
+                    viewBox="0 0 900 110"
+                    role="img"
+                    aria-label="Original pastel artwork"
+                  >
+                    <defs>
+                      <linearGradient id="art-gradient">
+                        <stop stop-color="#b9bee9" />
+                        <stop offset="1" stop-color="#efc3be" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="900" height="110" fill="url(#art-gradient)" />
+                    <circle cx="700" cy="55" r="42" fill="#f9e8c7" />
+                    <path d="M0 110Q170 -40 340 110Q510 -25 660 110Z" fill="#8c92bf" />
+                    <path d="M300 110Q460 10 620 110Q780 30 940 110Z" fill="#dcaeae" />
+                  </svg>
+                </div>
+                <p
+                  id="live-block"
+                  class="notion-text-block"
+                  contenteditable="true"
+                  style="color: rgb(55, 53, 47)"
+                >
+                  A new thought goes here…
+                </p>
+              </article>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+    <div class="notion-overlay-container" id="overlays"></div>
+    <div class="fixture-controls" aria-label="SPA fixture controls">
+      <button id="add-block">Add SPA block</button><button id="recolor-block">Author a color</button
+      ><button id="fixture-menu">Open menu</button>
+    </div>
+    <script>
+      function openMenu() {
+        const host = document.getElementById('overlays');
+        if (host.firstElementChild) {
+          host.replaceChildren();
+          return;
+        }
+        const menu = document.createElement('div');
+        menu.setAttribute('role', 'menu');
+        menu.setAttribute('aria-label', 'Page actions');
+        menu.style.cssText = 'background-color:rgb(255,255,255);color:rgb(55,53,47)';
+        for (const label of [
+          '↗  Open in new tab',
+          '☆  Add to favorites',
+          '⧉  Duplicate page',
+          '↧  Export'
+        ]) {
+          const item = document.createElement('div');
+          item.setAttribute('role', 'menuitem');
+          item.tabIndex = 0;
+          item.textContent = label;
+          item.style.color = 'rgb(55,53,47)';
+          menu.append(item);
+        }
+        host.append(menu);
+      }
+      document.getElementById('open-menu').addEventListener('click', openMenu);
+      document.getElementById('fixture-menu').addEventListener('click', openMenu);
+      document.getElementById('add-block').addEventListener('click', () => {
+        const row = document.createElement('tr');
+        row.innerHTML =
+          '<td style="color:rgb(55,53,47);border-bottom:1px solid rgba(55,53,47,.13)">✦ &nbsp; A fresh idea</td><td><span class="tag" style="background-color:#dbeee2;color:#2b593f">New</span></td><td>Tomorrow</td>';
+        document.getElementById('project-rows').append(row);
+      });
+      document.getElementById('recolor-block').addEventListener('click', () => {
+        document.getElementById('live-block').style.color = 'rgb(212,76,71)';
+      });
+    </script>
+  </body>
+</html>

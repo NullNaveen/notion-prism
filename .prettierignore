@@ -1,0 +1,10 @@
+node_modules/
+dist/
+output/
+.playwright-cli/
+.playwright/
+playwright-report/
+test-results/
+docs/design.md
+docs/implementation-plan.md
+docs/verification.md

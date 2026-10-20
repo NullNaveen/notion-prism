@@ -1,0 +1,279 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Database contrast fixture</title>
+    <style>
+      :root {
+        --c-texPri: #37352f;
+        --c-texSec: #787774;
+        --c-grpColEle: #fff;
+        --c-purTexPri: #694084;
+        --c-purBacPri: #e8deee;
+        --c-bluBacPri: #d3e5ef;
+        --c-bluTexPri: #1c5172;
+        --c-yelBacPri: #fdecc8;
+        --c-yelTexPri: #76551c;
+        --c-greBacPri: #dbeddb;
+        --c-greTexPri: #2b593f;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font: 14px/1.5 system-ui;
+        color: var(--c-texPri);
+      }
+      #notion-app {
+        min-height: 100vh;
+      }
+      main {
+        padding: 24px;
+      }
+      .tabs {
+        display: flex;
+        gap: 20px;
+        padding: 12px 8px;
+      }
+      .notion-board-view {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+        padding: 14px;
+        border-radius: 8px;
+      }
+      .group {
+        padding: 6px;
+      }
+      .group-title {
+        height: 32px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .badge {
+        display: inline-block;
+        border-radius: 5px;
+        padding: 1px 7px;
+        white-space: nowrap;
+        font-size: 12px;
+      }
+      .card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        margin: 8px 0;
+        padding: 12px;
+        min-height: 75px;
+      }
+      .title {
+        font-weight: 600;
+        margin-bottom: 9px;
+      }
+      .card:hover {
+        outline: 1px solid #666;
+      }
+      .notion-table-view {
+        margin-top: 28px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      td,
+      th {
+        text-align: left;
+        padding: 12px 16px;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        font-weight: 400;
+        background: var(--c-grpColEle);
+        color: var(--c-texSec);
+      }
+      .notion-property-status .badge {
+        font-size: 13px;
+      }
+      .authored {
+        margin: 20px 0;
+        padding: 15px;
+        background: #fff;
+      }
+      .notice {
+        font-size: 12px;
+        color: var(--c-texSec);
+        margin: 12px 0;
+      }
+      button {
+        font: inherit;
+      }
+    </style>
+  </head>
+  <body class="notion-light-theme">
+    <div id="notion-app">
+      <main class="notion-frame">
+        <div class="notion-collection_view_page-block">
+          <div class="tabs"><strong>▥ Board</strong><span>▤ Table</span><span>☷ List</span></div>
+          <div class="notion-board-view">
+            <div
+              class="group"
+              data-color="purple_background"
+              style="background: rgba(144, 101, 176, 0.08)"
+            >
+              <div class="group-title" style="color: var(--c-purTexPri)">
+                <span class="badge" style="background: var(--c-purBacPri)">Mine</span
+                ><span id="purple-count">2</span>
+              </div>
+              <div
+                id="variable-card"
+                class="card"
+                style="--native-card: #fff; background: var(--native-card)"
+              >
+                <div class="title" id="variable-title" style="color: var(--c-texPri)">
+                  Release checklist
+                </div>
+                <div class="notion-property-select">
+                  <span
+                    class="badge"
+                    style="background: var(--c-purBacPri); color: var(--c-purTexPri)"
+                    >Not urgent & important</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-title">
+                <span class="badge" style="background: rgba(120, 119, 116, 0.2); color: #575652"
+                  >Todo</span
+                >7
+              </div>
+              <div class="card notion-collection-card" style="background: white">
+                <div class="title">Today</div>
+                <span id="literal-red" class="badge" style="background: rgba(228, 79, 67, 0.2)"
+                  ><span style="color: rgb(93, 23, 21)">Urgent & important</span></span
+                >
+              </div>
+            </div>
+            <div
+              class="group"
+              data-color="blue_background"
+              style="background: rgba(35, 131, 226, 0.08)"
+            >
+              <div class="group-title" style="color: var(--c-bluTexPri)">
+                <span class="badge" style="background: var(--c-bluBacPri)">Tasks by person</span>4
+              </div>
+              <div class="card notion-collection-item" style="background: var(--c-grpColEle)">
+                <div class="title">Plan the launch</div>
+                <span
+                  class="badge"
+                  style="background: var(--c-purBacPri); color: var(--c-purTexPri)"
+                  >Not urgent & important</span
+                >
+              </div>
+            </div>
+            <div
+              class="group"
+              data-color="green_background"
+              style="background: rgba(44, 166, 107, 0.08)"
+            >
+              <div class="group-title" style="color: var(--c-greTexPri)">
+                <span class="badge" style="background: var(--c-greBacPri)">Projects</span>4
+              </div>
+              <div class="card" style="background: var(--c-grpColEle)">
+                <div class="title">Project notes</div>
+                <span class="badge" style="background: #fbe4e0; color: #932e26"
+                  >Urgent & important</span
+                >
+              </div>
+            </div>
+            <div
+              class="group"
+              data-color="yellow_background"
+              style="background: rgba(220, 173, 60, 0.08)"
+            >
+              <div class="group-title" style="color: var(--c-yelTexPri)">
+                <span class="badge" style="background: var(--c-yelBacPri)">Study</span>5
+              </div>
+              <div class="card" style="background: var(--c-grpColEle)">
+                <div class="title">English</div>
+                <span
+                  class="badge"
+                  style="background: var(--c-purBacPri); color: var(--c-purTexPri)"
+                  >Not urgent & important</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="notion-table-view">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Assign</th>
+                  <th>Checkbox</th>
+                  <th>Eisenhower matrix</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Todo</td>
+                  <td>—</td>
+                  <td><input type="checkbox" aria-label="Todo complete" /></td>
+                  <td>
+                    <span class="badge" style="background: rgba(228, 79, 67, 0.2); color: #5d1715"
+                      >Urgent & important</span
+                    >
+                  </td>
+                  <td class="notion-property-status">
+                    <span
+                      class="badge"
+                      style="background: var(--c-purBacPri); color: var(--c-purTexPri)"
+                      >Mine</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>Understand</td>
+                  <td>—</td>
+                  <td><input type="checkbox" aria-label="Understand complete" /></td>
+                  <td>—</td>
+                  <td class="notion-property-status">
+                    <span
+                      class="badge"
+                      style="background: var(--c-yelBacPri); color: var(--c-yelTexPri)"
+                      >Study</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>Others</td>
+                  <td>—</td>
+                  <td><input type="checkbox" aria-label="Others complete" /></td>
+                  <td>—</td>
+                  <td class="notion-property-status">
+                    <span class="badge" style="background: rgba(120, 119, 116, 0.2); color: #575652"
+                      >Todo</span
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="notion-page-content authored">
+          <span id="authored-red" style="color: #d44c47"
+            >An intentionally colored sentence outside the database.</span
+          >
+          <div class="notion-code-block">
+            <code id="syntax" style="color: #dd4a68">originalSyntaxColor()</code>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

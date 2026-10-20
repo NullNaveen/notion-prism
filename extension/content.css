@@ -1,0 +1,533 @@
+/* Every rule is opt-in. Removing data-prism-enabled restores Notion's cascade. */
+html[data-prism-enabled='true'],
+html[data-prism-enabled='true'] :is(body, .notion-light-theme, .notion-dark-theme) {
+  color-scheme: var(--prism-color-scheme) !important;
+  --c-texPri: var(--prism-text) !important;
+  --c-texSec: var(--prism-muted) !important;
+  --c-texTer: var(--prism-muted) !important;
+  --c-texDis: var(--prism-muted) !important;
+  --ca-texDisTra: var(--prism-muted) !important;
+  --c-texAccPri: var(--prism-text) !important;
+  --c-texInvPri: var(--prism-accent-ink) !important;
+  --c-texInvSec: var(--prism-accent-ink) !important;
+  --c-icoPri: var(--prism-text) !important;
+  --c-icoSec: var(--prism-muted) !important;
+  --c-graTexAccPri: var(--prism-muted) !important;
+  --c-graIcoAccPri: var(--prism-muted) !important;
+  --c-bluIcoAccPri: var(--prism-accent) !important;
+  --c-icoTer: var(--prism-muted) !important;
+  --c-icoDis: var(--prism-muted) !important;
+  --c-icoAccPri: var(--prism-accent) !important;
+  --c-icoInvPri: var(--prism-accent-ink) !important;
+  --c-icoInvSec: var(--prism-accent-ink) !important;
+  --c-bacPri: var(--prism-surface) !important;
+  --c-bacSec: var(--prism-panel) !important;
+  --c-bacTer: var(--prism-hover) !important;
+  --c-bacEle: var(--prism-surface-solid) !important;
+  --c-bacInt: var(--prism-hover) !important;
+  --c-bacAccPri: var(--prism-accent) !important;
+  --c-bacAccSec: var(--prism-muted) !important;
+  --ca-bacPriTra: transparent !important;
+  --ca-bacSecTra: var(--prism-hover) !important;
+  --ca-bacTerTra: var(--prism-hover) !important;
+  --ca-bacIntTra: var(--prism-hover) !important;
+  --c-borPri: var(--prism-border) !important;
+  --c-borSec: var(--prism-border) !important;
+  --c-borInvPri: var(--prism-border) !important;
+  --c-borAccPri: var(--prism-accent) !important;
+  --c-borStr: var(--prism-border) !important;
+  --ca-borPriTra: var(--prism-border) !important;
+  --ca-borSecTra: var(--prism-border) !important;
+  --ca-borStrTra: var(--prism-border) !important;
+  --c-popBac: var(--prism-surface-solid) !important;
+  --ca-popWaxPapBac: var(--prism-surface-solid) !important;
+  --c-selMarDisBac: var(--prism-surface-solid) !important;
+  --c-sidSecCol: var(--prism-muted) !important;
+  --ca-sidIteSelBac: var(--prism-hover) !important;
+  --ca-sidSecBac: var(--prism-hover) !important;
+  --ca-butHovBac: var(--prism-hover) !important;
+  --ca-butPreBac: var(--prism-hover) !important;
+  --ca-butPreBacLig: var(--prism-hover) !important;
+  --c-butGroBac: var(--prism-surface-solid) !important;
+  --ca-staHov: var(--prism-hover) !important;
+  --ca-staPre: var(--prism-hover) !important;
+  /* Older Notion releases and published pages use these descriptive tokens. */
+  --color-text-default: var(--prism-text) !important;
+  --color-text-default-light: var(--prism-muted) !important;
+  --color-background-default: var(--prism-surface) !important;
+  --color-background-default-light: var(--prism-panel) !important;
+  --color-border-default: var(--prism-border) !important;
+}
+
+html[data-prism-enabled='true'] {
+  background-color: var(--prism-bg) !important;
+}
+html[data-prism-enabled='true'] body {
+  background-color: transparent !important;
+  color: var(--prism-text) !important;
+  isolation: isolate;
+}
+html[data-prism-enabled='true'] #prism-wallpaper {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: -1 !important;
+  background-image: var(--prism-wallpaper) !important;
+  background-size: var(--prism-size) !important;
+  background-position: var(--prism-position) !important;
+  background-repeat: no-repeat !important;
+  background-color: var(--prism-bg) !important;
+  filter: blur(var(--prism-blur)) !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  contain: strict;
+}
+html[data-prism-enabled='true'] #prism-wallpaper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--prism-overlay);
+}
+html[data-prism-enabled='true']
+  #prism-wallpaper
+  > :is(.prism-background-media, .prism-background-backdrop) {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  object-fit: var(--prism-object-fit) !important;
+  object-position: var(--prism-position) !important;
+  background-size: var(--prism-size) !important;
+  background-position: var(--prism-position) !important;
+  background-repeat: no-repeat !important;
+  pointer-events: none !important;
+}
+
+html[data-prism-enabled='true']
+  :is(#notion-app, .notion-app, .notion-app-inner, .notion-cursor-listener, .notion-scroller) {
+  background-color: transparent !important;
+  color: var(--prism-text) !important;
+}
+html[data-prism-enabled='true'] :is(.notion-frame, .notion-main:not(:has(.notion-frame))) {
+  background-color: var(--prism-surface) !important;
+}
+html[data-prism-enabled='true'] :is(.notion-sidebar-container, .notion-sidebar, #skeleton-sidebar) {
+  background-color: var(--prism-panel) !important;
+  color: var(--prism-text) !important;
+  border-color: var(--prism-border) !important;
+  box-shadow: inset -1px 0 0 var(--prism-border) !important;
+}
+html[data-prism-enabled='true'] :is(.notion-topbar, .notion-topbar-container) {
+  background-color: var(--prism-panel) !important;
+  color: var(--prism-text) !important;
+  border-color: var(--prism-border) !important;
+}
+html[data-prism-enabled='true']
+  :is(
+    [role='menu'],
+    [role='dialog'],
+    [role='listbox'],
+    .notion-peek-renderer,
+    .notion-selectable-menu,
+    .notion-settings
+  ) {
+  --c-bacPri: var(--prism-surface-solid) !important;
+  --c-bacSec: var(--prism-panel-solid) !important;
+  background-color: var(--prism-surface-solid) !important;
+  color: var(--prism-text) !important;
+  border-color: var(--prism-border) !important;
+}
+html[data-prism-enabled='true']
+  :is(.notion-collection_view-block, .notion-collection_view_page-block, .notion-table-view) {
+  border-color: var(--prism-border) !important;
+}
+
+/* Databases stay open to the wallpaper. Narrow text halos and small paired
+   status chips protect ink without covering the entire table or board. */
+html[data-prism-enabled='true']
+  :is(
+    .notion-collection_view-block,
+    .notion-collection_view_page-block,
+    .notion-board-view,
+    .notion-table-view,
+    .notion-list-view,
+    .notion-gallery-view,
+    .notion-collection-view-body,
+    .notion-calendar-view,
+    .notion-timeline-view,
+    .notion-feed-view,
+    .notion-chart-view,
+    .notion-form-view
+  ) {
+  --c-grpColEle: var(--prism-database-surface);
+  --c-bacPri: var(--prism-database-surface);
+  --c-bacSec: var(--prism-database-surface);
+  --c-bacTer: var(--prism-database-surface);
+  --c-bacEle: var(--prism-database-surface);
+  --color-background-default: var(--prism-database-surface);
+  --color-background-default-light: var(--prism-database-surface);
+  --c-graBacPri: var(--prism-group-gray-bg);
+  --c-graBacSec: var(--prism-group-gray-bg);
+  --c-graBacTer: var(--prism-group-gray-bg);
+  --ca-graBacPriTra: var(--prism-group-gray-bg);
+  --c-graTexPri: var(--prism-label-gray-ink);
+  --c-graTexSec: var(--prism-label-gray-ink);
+  --c-broBacPri: var(--prism-group-brown-bg);
+  --c-broBacSec: var(--prism-group-brown-bg);
+  --c-broBacTer: var(--prism-group-brown-bg);
+  --ca-broBacPriTra: var(--prism-group-brown-bg);
+  --c-broTexPri: var(--prism-label-brown-ink);
+  --c-broTexSec: var(--prism-label-brown-ink);
+  --c-oraBacPri: var(--prism-group-orange-bg);
+  --c-oraBacSec: var(--prism-group-orange-bg);
+  --c-oraBacTer: var(--prism-group-orange-bg);
+  --ca-oraBacPriTra: var(--prism-group-orange-bg);
+  --c-oraTexPri: var(--prism-label-orange-ink);
+  --c-oraTexSec: var(--prism-label-orange-ink);
+  --c-yelBacPri: var(--prism-group-yellow-bg);
+  --c-yelBacSec: var(--prism-group-yellow-bg);
+  --c-yelBacTer: var(--prism-group-yellow-bg);
+  --ca-yelBacPriTra: var(--prism-group-yellow-bg);
+  --c-yelTexPri: var(--prism-label-yellow-ink);
+  --c-yelTexSec: var(--prism-label-yellow-ink);
+  --c-greBacPri: var(--prism-group-green-bg);
+  --c-greBacSec: var(--prism-group-green-bg);
+  --c-greBacTer: var(--prism-group-green-bg);
+  --ca-greBacPriTra: var(--prism-group-green-bg);
+  --c-greTexPri: var(--prism-label-green-ink);
+  --c-greTexSec: var(--prism-label-green-ink);
+  --c-bluBacPri: var(--prism-group-blue-bg);
+  --c-bluBacSec: var(--prism-group-blue-bg);
+  --c-bluBacTer: var(--prism-group-blue-bg);
+  --ca-bluBacPriTra: var(--prism-group-blue-bg);
+  --c-bluTexPri: var(--prism-label-blue-ink);
+  --c-bluTexSec: var(--prism-label-blue-ink);
+  --c-purBacPri: var(--prism-group-purple-bg);
+  --c-purBacSec: var(--prism-group-purple-bg);
+  --c-purBacTer: var(--prism-group-purple-bg);
+  --ca-purBacPriTra: var(--prism-group-purple-bg);
+  --c-purTexPri: var(--prism-label-purple-ink);
+  --c-purTexSec: var(--prism-label-purple-ink);
+  --c-pinBacPri: var(--prism-group-pink-bg);
+  --c-pinBacSec: var(--prism-group-pink-bg);
+  --c-pinBacTer: var(--prism-group-pink-bg);
+  --ca-pinBacPriTra: var(--prism-group-pink-bg);
+  --c-pinTexPri: var(--prism-label-pink-ink);
+  --c-pinTexSec: var(--prism-label-pink-ink);
+  --c-redBacPri: var(--prism-group-red-bg);
+  --c-redBacSec: var(--prism-group-red-bg);
+  --c-redBacTer: var(--prism-group-red-bg);
+  --ca-redBacPriTra: var(--prism-group-red-bg);
+  --c-redTexPri: var(--prism-label-red-ink);
+  --c-redTexSec: var(--prism-label-red-ink);
+}
+html[data-prism-enabled='true']
+  :is(
+    .notion-board-view,
+    .notion-table-view,
+    .notion-list-view,
+    .notion-gallery-view,
+    .notion-calendar-view,
+    .notion-timeline-view,
+    .notion-feed-view,
+    .notion-chart-view,
+    .notion-form-view
+  ) {
+  background-color: transparent !important;
+  color: var(--prism-text) !important;
+}
+html[data-prism-enabled='true'] :is(.notion-collection-card, .notion-collection-item) {
+  background-color: var(--prism-database-surface) !important;
+  color: var(--prism-text) !important;
+  border-color: var(--prism-border) !important;
+}
+html[data-prism-enabled='true'] .notion-table-view :is(th, [role='columnheader']) {
+  background-color: var(--prism-database-surface) !important;
+  color: var(--prism-muted) !important;
+}
+/* Native text and surfaces are classified into roles without changing page styles. */
+html[data-prism-enabled='true'] [data-prism-style~='text-fill'] {
+  -webkit-text-fill-color: currentColor !important;
+}
+html[data-prism-enabled='true'] [data-prism-style~='text'] {
+  color: var(--prism-text) !important;
+}
+html[data-prism-enabled='true'] [data-prism-style~='muted'] {
+  color: var(--prism-muted) !important;
+}
+html[data-prism-enabled='true'] [data-prism-style~='accent-ink'] {
+  color: var(--prism-accent-ink) !important;
+}
+html[data-prism-enabled='true'] [data-prism-style~='accent-bg'] {
+  background-color: var(--prism-accent) !important;
+}
+html[data-prism-enabled='true'] [data-prism-style~='transparent'] {
+  background-color: transparent !important;
+}
+html[data-prism-enabled='true'] [data-prism-style~='surface'] {
+  background-color: var(--prism-surface) !important;
+}
+html[data-prism-enabled='true'] [data-prism-style~='database-surface'] {
+  background-color: var(--prism-database-surface) !important;
+}
+html[data-prism-enabled='true'] [data-prism-style~='surface-solid'] {
+  background-color: var(--prism-surface-solid) !important;
+}
+html[data-prism-enabled='true'] [data-prism-style~='panel'] {
+  background-color: var(--prism-panel) !important;
+}
+html[data-prism-enabled='true'] [data-prism-style~='hover'] {
+  background-color: var(--prism-hover) !important;
+}
+html[data-prism-enabled='true'] [data-prism-style~='border-top'] {
+  border-top-color: var(--prism-border) !important;
+}
+html[data-prism-enabled='true'] [data-prism-style~='border-right'] {
+  border-right-color: var(--prism-border) !important;
+}
+html[data-prism-enabled='true'] [data-prism-style~='border-bottom'] {
+  border-bottom-color: var(--prism-border) !important;
+}
+html[data-prism-enabled='true'] [data-prism-style~='border-left'] {
+  border-left-color: var(--prism-border) !important;
+}
+
+/* Authored highlight backgrounds keep their hue. Locally pair inherited and
+   default text tokens with that surface; explicit authored text hues still win. */
+html[data-prism-enabled='true'] [data-prism-style~='authored-light'] {
+  --prism-highlight-ink: #000;
+}
+html[data-prism-enabled='true'] [data-prism-style~='authored-dark'] {
+  --prism-highlight-ink: #fff;
+}
+html[data-prism-enabled='true']
+  :is([data-prism-style~='authored-light'], [data-prism-style~='authored-dark']) {
+  --prism-text: var(--prism-highlight-ink);
+  --prism-muted: var(--prism-highlight-ink);
+  --c-texPri: var(--prism-highlight-ink);
+  --c-texSec: var(--prism-highlight-ink);
+  --c-texTer: var(--prism-highlight-ink);
+  --c-texDis: var(--prism-highlight-ink);
+  --c-texAccPri: var(--prism-highlight-ink);
+  --ca-texDisTra: var(--prism-highlight-ink);
+  --color-text-default: var(--prism-highlight-ink);
+  --color-text-default-light: var(--prism-highlight-ink);
+  color: var(--prism-highlight-ink);
+}
+
+html[data-prism-enabled='true'] [data-prism-style~='label-gray'] {
+  --prism-label-bg: var(--prism-label-gray-bg);
+  --prism-label-ink: var(--prism-label-gray-ink);
+}
+html[data-prism-enabled='true'] [data-prism-style~='label-brown'] {
+  --prism-label-bg: var(--prism-label-brown-bg);
+  --prism-label-ink: var(--prism-label-brown-ink);
+}
+html[data-prism-enabled='true'] [data-prism-style~='label-orange'] {
+  --prism-label-bg: var(--prism-label-orange-bg);
+  --prism-label-ink: var(--prism-label-orange-ink);
+}
+html[data-prism-enabled='true'] [data-prism-style~='label-yellow'] {
+  --prism-label-bg: var(--prism-label-yellow-bg);
+  --prism-label-ink: var(--prism-label-yellow-ink);
+}
+html[data-prism-enabled='true'] [data-prism-style~='label-green'] {
+  --prism-label-bg: var(--prism-label-green-bg);
+  --prism-label-ink: var(--prism-label-green-ink);
+}
+html[data-prism-enabled='true'] [data-prism-style~='label-blue'] {
+  --prism-label-bg: var(--prism-label-blue-bg);
+  --prism-label-ink: var(--prism-label-blue-ink);
+}
+html[data-prism-enabled='true'] [data-prism-style~='label-purple'] {
+  --prism-label-bg: var(--prism-label-purple-bg);
+  --prism-label-ink: var(--prism-label-purple-ink);
+}
+html[data-prism-enabled='true'] [data-prism-style~='label-pink'] {
+  --prism-label-bg: var(--prism-label-pink-bg);
+  --prism-label-ink: var(--prism-label-pink-ink);
+}
+html[data-prism-enabled='true'] [data-prism-style~='label-red'] {
+  --prism-label-bg: var(--prism-label-red-bg);
+  --prism-label-ink: var(--prism-label-red-ink);
+}
+html[data-prism-enabled='true'] [data-prism-style~='label'] {
+  background-color: var(--prism-label-bg) !important;
+}
+html[data-prism-enabled='true'] [data-prism-style~='label'],
+html[data-prism-enabled='true'] [data-prism-style~='label'] :not(img, video, canvas, iframe) {
+  color: var(--prism-label-ink) !important;
+  -webkit-text-fill-color: currentColor !important;
+  text-shadow: none !important;
+}
+
+/* Avoid multiplying opacity across Notion's nested full-size wrappers. */
+html[data-prism-enabled='true']
+  #notion-app
+  :is(.notion-app-inner, .notion-main, .notion-cursor-listener, .notion-scroller) {
+  background-color: transparent !important;
+}
+html[data-prism-enabled='true'] #notion-app .notion-frame {
+  background-color: var(--prism-canvas) !important;
+}
+html[data-prism-enabled='true'] #notion-app .notion-page-content {
+  background-color: var(--prism-surface) !important;
+  border-radius: 12px;
+}
+
+/* A database can be full-page or embedded inside a document. Neither its
+   wrapper nor an ancestor page slab should hide the wallpaper. These rules
+   follow the inline markers so an original white view cannot win the cascade. */
+html[data-prism-enabled='true']
+  :is(
+    .notion-collection_view-block,
+    .notion-collection_view_page-block,
+    .notion-board-view,
+    .notion-table-view,
+    .notion-list-view,
+    .notion-gallery-view,
+    .notion-collection-view-body,
+    .notion-calendar-view,
+    .notion-timeline-view,
+    .notion-feed-view,
+    .notion-chart-view,
+    .notion-form-view
+  ),
+html[data-prism-enabled='true']
+  #notion-app
+  :is(.notion-page-content, .notion-page-content-inner):has(
+    :is(
+      .notion-collection_view-block,
+      .notion-collection_view_page-block,
+      .notion-board-view,
+      .notion-table-view,
+      .notion-list-view,
+      .notion-gallery-view,
+      .notion-collection-view-body,
+      .notion-calendar-view,
+      .notion-timeline-view,
+      .notion-feed-view,
+      .notion-chart-view,
+      .notion-form-view
+    )
+  ) {
+  background-color: transparent !important;
+  color: var(--prism-text);
+  text-shadow:
+    -0.75px -0.75px 0 var(--prism-surface-solid),
+    0.75px -0.75px 0 var(--prism-surface-solid),
+    -0.75px 0.75px 0 var(--prism-surface-solid),
+    0.75px 0.75px 0 var(--prism-surface-solid),
+    0 -1px 0 var(--prism-surface-solid),
+    0 1px 0 var(--prism-surface-solid),
+    -1px 0 0 var(--prism-surface-solid),
+    1px 0 0 var(--prism-surface-solid),
+    0 1px 3px var(--prism-surface-solid);
+}
+/* Locally opaque UI and authored media do not need inherited text halos. */
+html[data-prism-enabled='true']
+  :is(
+    [role='menu'],
+    [role='dialog'],
+    [role='listbox'],
+    [data-prism-style~='accent-bg'],
+    .notion-code-block,
+    pre,
+    code,
+    svg,
+    math,
+    [data-prism-preserve]
+  ) {
+  text-shadow: none;
+}
+
+html[data-prism-enabled='true'] :is(button, [role='button'], input, [role='checkbox']) {
+  --c-bluBacAccPri: var(--prism-accent);
+  --c-bluTexInvPri: var(--prism-accent-ink);
+  --c-bluBorAccPri: var(--prism-accent);
+  accent-color: var(--prism-accent);
+}
+html[data-prism-enabled='true']
+  :is(.notion-sidebar-container, .notion-topbar, [role='menu'])
+  :is(button, [role='button'], [role='menuitem']):hover {
+  background-color: var(--prism-hover) !important;
+}
+html[data-prism-enabled='true']
+  :is(input, textarea):not([type='checkbox']):not([type='radio']):not([type='range']) {
+  background-color: var(--prism-surface-solid);
+  color: var(--prism-text);
+  caret-color: var(--prism-accent);
+  border-color: var(--prism-border);
+}
+html[data-prism-enabled='true'] :is(input, textarea)::placeholder {
+  color: var(--prism-muted);
+}
+html[data-prism-enabled='true'] [contenteditable='true'] {
+  caret-color: var(--prism-accent);
+}
+html[data-prism-enabled='true']
+  :is(button, input, textarea, [role='button'], [tabindex]):focus-visible {
+  outline-color: var(--prism-accent) !important;
+}
+html[data-prism-enabled='true']
+  :is(.notion-sidebar-container, .notion-topbar, .notion-page-content)
+  ::selection {
+  background-color: color-mix(in srgb, var(--prism-accent) 32%, transparent);
+}
+html[data-prism-enabled='true'] :is(.notion-scroller, .notion-sidebar-container) {
+  scrollbar-color: var(--prism-muted) transparent;
+}
+html[data-prism-enabled='true']
+  :is(.notion-scroller, .notion-sidebar-container)::-webkit-scrollbar-thumb {
+  background-color: var(--prism-border) !important;
+}
+
+/* Syntax colors belong to Notion. Retain a matching native code backdrop even
+   when the user selects a Prism theme with the opposite light/dark mode. */
+html[data-prism-enabled='true'] .notion-code-block {
+  --c-texPri: #2c2c2b;
+  --c-texSec: #7d7a75;
+  --c-bacPri: #fff;
+  --c-bacSec: #f9f8f7;
+  --c-bacTer: #f0efed;
+  --c-borPri: #e6e5e3;
+  --c-borSec: #f0efed;
+  color: var(--c-texPri);
+  color-scheme: light;
+}
+html[data-prism-enabled='true'] .notion-dark-theme .notion-code-block {
+  --c-texPri: #f0efed;
+  --c-texSec: #ada9a3;
+  --c-bacPri: #191919;
+  --c-bacSec: #202020;
+  --c-bacTer: #383836;
+  --c-borPri: #383836;
+  --c-borSec: #2c2c2b;
+  color-scheme: dark;
+}
+
+@media print {
+  html[data-prism-enabled='true'] #prism-wallpaper {
+    display: none !important;
+  }
+  html[data-prism-enabled='true'] {
+    --prism-bg: white !important;
+    --prism-canvas: white !important;
+    --prism-panel: white !important;
+    --prism-panel-solid: white !important;
+    --prism-surface: white !important;
+    --prism-surface-solid: white !important;
+    --prism-text: #222 !important;
+    --prism-muted: #555 !important;
+    --prism-border: #ddd !important;
+    --prism-hover: #f6f6f6 !important;
+  }
+}
+
+/* Fit preserves the complete source in front; only the gap-filling copy blurs. */
+html[data-prism-enabled='true'] #prism-wallpaper > .prism-background-backdrop {
+  object-fit: cover !important;
+  background-size: cover !important;
+  object-position: center !important;
+  background-position: center !important;
+  filter: blur(24px) !important;
+  opacity: 0.7 !important;
+}

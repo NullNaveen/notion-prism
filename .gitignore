@@ -1,0 +1,22 @@
+# Local development
+.DS_Store
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+__pycache__/
+*.pyc
+
+# Build output and browser profiles
+dist/
+output/
+.playwright-cli/
+.playwright/
+playwright-report/
+test-results/
+
+# Local planning and verification notes
+docs/design.md
+docs/implementation-plan.md
+docs/verification.md

@@ -1,0 +1,25 @@
+{
+  "name": "prism-for-notion",
+  "version": "1.4.0",
+  "private": true,
+  "description": "Coordinated colorful themes and personal backgrounds for Notion",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "package": "python3 scripts/package.py"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NullNaveen/notion-prism.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NullNaveen/notion-prism/issues"
+  },
+  "devDependencies": {
+    "prettier": "3.9.10"
+  }
+}

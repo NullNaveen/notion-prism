@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Prism for Notion</title>
+    <link rel="stylesheet" href="ui.css" />
+    <link rel="stylesheet" href="popup.css" />
+    <script src="palette.js" defer></script>
+    <script src="core.js" defer></script>
+    <script src="storage.js" defer></script>
+    <script src="popup.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="studio.html" target="_blank"
+        ><span class="prism-mark" aria-hidden="true"></span
+        ><span>prism<span class="brand-sub">FOR NOTION</span></span></a
+      ><label class="switch"
+        ><input id="enabled" type="checkbox" checked aria-label="Enable Prism themes" /><span></span
+      ></label>
+    </header>
+    <section class="popup-hero" id="popup-hero">
+      <span class="hero-eyebrow">A NEW ATMOSPHERE</span>
+      <h1>Your Notion.<br />A little more <em>you.</em></h1>
+      <span class="active-theme" id="active-theme">Aurora</span>
+    </section>
+    <div class="collection-heading">
+      <h2>Pick your mood</h2>
+      <button id="match-image" class="text-button" aria-pressed="false" hidden>
+        Match image colors
+      </button>
+    </div>
+    <div id="theme-grid" class="theme-grid"></div>
+    <button id="open-studio" class="primary full">
+      Open theme studio <span aria-hidden="true">↗</span>
+    </button>
+    <p class="studio-help">Add images. Find your colors. Make it yours.</p>
+    <footer>
+      <span class="status-dot"></span><span id="status" role="status">Saved on this device</span
+      ><button id="open-notion">Open Notion ↗</button>
+    </footer>
+  </body>
+</html>
